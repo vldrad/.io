@@ -1,8 +1,8 @@
 "use strict";
 
 function weightIndex (weight, height) {
+    const greeting = alert('Вітаю! Тут ви можете дізнатись індекс маси вашого тіла. Для цього виміряйте свої дані (вагу та зріст) та введіть їх згідно інструкцій.')
     for (let i = 1; i >= 1; i++) {
-        const greeting = alert('Вітаю! Тут ви можете дізнатись індекс маси вашого тіла. Для цього виміряйте свої дані (вагу та зріст) та введіть їх згідно інструкцій.')
         const userWeight = prompt('Ваша вага? (в кг)','');
         const userHeight = prompt('Ваш зріст? (в см)','');
         weight = userWeight;
