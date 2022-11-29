@@ -41,4 +41,3 @@ function weightIndex (weight, height) {
         }
     }
 } 
-weightIndex();

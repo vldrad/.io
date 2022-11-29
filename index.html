@@ -3,57 +3,10 @@
 <head>
     <title>Exercises</title>
     <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
-    <script src="script.js"></script>
 </head>
-<body style="background-color: black; padding: 5px; margin: 0; display:flex; flex-direction:column; align-items: center; width: 100%;">
-    <div class="code" style="flex-basis: 100%;">
-        <pre>
-            <code style="color: green">
-                function weightIndex (weight, height) {
-                    const greeting = alert('Вітаю! Тут ви можете дізнатись індекс маси вашого тіла. Для цього виміряйте свої дані (вагу та зріст) та введіть їх згідно інструкцій.');
-                    for (let i = 1; i >= 1; i++) {
-                        let userWeight = prompt('Ваша вага? (в кг)','');
-                        let userHeight = prompt('Ваш зріст? (в см)','');
-                        weight = userWeight;
-                        height = userHeight;
-                        userWeight = Number(userWeight);
-                        userHeight = Number(userHeight);
-                        console.log(userWeight);
-                        if (userWeight == null || userHeight == null || userWeight == '' || userHeight == '' || isNaN(userWeight) == true || isNaN(userHeight) == true) {
-                            const indexError = alert('Щось пішло не так , будь-ласка перевірте введені дані та спробуйте ще раз.');
-                            i--;
-                        } else {
-                            let index = weight / ((height / 100) * 2);
-                            index = (String(index));
-                            if (index < 16) {
-                                const a = alert(`Ваш ІМТ (Індекс Маси Тіла): ${index.slice(0, 4)}\nУ вас значний дефіцит маси тіла.`);
-                                break;
-                            } else if (index == 16 || index < 18.5) {
-                                const b = alert(`Ваш ІМТ (Індекс Маси Тіла): ${index.slice(0, 4)}\nУ вас дефіцит маси тіла.`);
-                                break;
-                            } else if (index == 18.5 || index < 25) {
-                                const d = alert(`Ваш ІМТ (Індекс Маси Тіла): ${index.slice(0, 4)}\nМаса тіла в нормі.`);
-                                break;
-                            } else if (index == 25 || index < 30) {
-                                const c = alert(`Ваш ІМТ (Індекс Маси Тіла): ${index.slice(0, 4)}\nУ вас є зайва вага.`);
-                                break;
-                            } else if (index == 30 || index < 35) {
-                                const d = alert(`Ваш ІМТ (Індекс Маси Тіла): ${index.slice(0, 4)}\nУ вас ожиріння першого ступеню.`);
-                                break;
-                            } else if (index == 35 || index < 40) {
-                                const e = alert(`Ваш ІМТ (Індекс Маси Тіла): ${index.slice(0, 4)}\nУ вас ожиріння другого ступеню.`);
-                                break;
-                            } else if (index == 40 || index > 40) {
-                                const f = alert(`Ваш ІМТ (Індекс Маси Тіла): ${index.slice(0, 4)}\nУ вас ожиріння третього ступеню.`);
-                                break;
-                            }
-                        }
-                    }
-                } 
-                weightIndex();
-                
-            </code>
-        </pre>
-    </div>
+<body style="background-color: black; padding: 100px; margin: 0; display:flex; flex-direction:column; align-items: center;">
+    <p style="color:whitesmoke; margin: 0 0 50px 0; font-size: 30px;">Індекс маси тіла — це показник, що дозволяє розрахувати співвідношення ваги людини до його зростання. По суті, ІМТ являє з себе коефіцієнт для визначення наявності (або відсутності) надлишкової маси тіла та пов’язаного з цим ожиріння.</p>
+    <button onclick="weightIndex()" style="width: 50%; height: 80px; font-size:50vm;">Розрахувати ІМТ</button>
+    <script src="script.js"></script>
 </body>
 </html>
