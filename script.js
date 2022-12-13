@@ -70,6 +70,6 @@ personalMovieDB.rememberMyFilms();
 personalMovieDB.writeYourGenres();
 // personalMovieDB.toggleVisibleMyDB();
 personalMovieDB.showMyDB();
-document.write(`Фильмов просмотрено : ${personalMovieDB.count}\n
-                Последние просмотренные : ${personalMovieDB.movies}\n
-                Любимые жанры : ${personalMovieDB.genres}`);
+console.log(`Фильмов просмотрено : ${personalMovieDB.count}\n
+             Последние просмотренные : ${personalMovieDB.movies}\n
+             Любимые жанры : ${personalMovieDB.genres}`);
