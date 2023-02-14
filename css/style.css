@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.game {
+    margin : 50px auto;
+    width: 1000px;
+    height: 400px;
+    background-image: linear-gradient(purple, white);
+    position: absolute;
+    border-bottom: 50px solid rgb(3, 43, 34);
+}
+
+#ufo {
+    background-image: url("../img/ufo.png");
+    background-size: 80px 50px;
+    width: 80px;
+    height: 50px;
+    /* border: 1px solid black; */
+    position: relative;
+    top: 300px;
+    left: 50px;
+    z-index: 2;
+}
+
+#house {
+    background-image: url("../img/house.png");
+    /* border: 1px solid black; */
+    background-size: 180px 150px;
+    width: 180px;
+    height: 150px;
+    position: relative;
+    left: 900px;
+    top: 200px;
+    animation: move 0.9s infinite linear;
+    z-index: 1;
+}
+
+
+@keyframes move {
+    0% {
+        left: 900px;
+    }
+
+    100% {
+        left: -200px;
+    }
+}
+
+.jump {
+    animation: jump 0.5s;
+}
+
+@keyframes jump {
+    0% {
+        top: 300px;
+        transform: rotate(-15deg);
+    }
+
+    50% {
+        top: 100px;
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        top: 300px;
+        transform: rotate(0deg);
+    }
+}
+
+#game_over {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 100px;
+    left: 200px;
+    font-size: 100px;
+    display: none;
+}
+
+#retry {
+    position: relative;
+    top : 250px;
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    right : 300px;
+}
