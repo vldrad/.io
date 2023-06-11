@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //MAKES GAME WORK
     function game () {
         buttons.forEach (btn => {
-            //For mouse click
+            
             btn.addEventListener('click', () => {
                 num++;
                 
@@ -52,21 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         btn.style.backgroundColor = 'black';
                         btn.style.border = 'none';
                     }, 300);
-                } else {
-                    completed++;
-    
-                    changeLvl();
-                }
-            });
-            //For touch screen
-            btn.addEventListener('touchstart', () => {
-                num++;
-                
-                if(num != btn.id) {
-                    restart();
-                } else if (buttons.length != num) {
-                    btn.style.backgroundColor = 'black';
-                    btn.style.border = 'none';
                 } else {
                     completed++;
     
