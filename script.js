@@ -1,170 +1,58 @@
-'use strict';
+'use strict'
 
-// Timer elements
-const timer = document.querySelector('.timer'),
-      timerNumbers = timer.querySelectorAll('#timer_numbers div'),
-      timerButtons = timer.querySelectorAll('#timer_arrows div div'),
-      timerConfirm = document.querySelector('#timer_confirm'),
-      timerPause = document.querySelector('#timer_pause'),
-      timerContinue = document.querySelector('#timer_continue'),
-      timerStop = document.querySelector('#timer_stop');
+document.addEventListener('DOMContentLoaded', () => {
 
-// Alarm sound
-let alarm = new Audio('alarm.mp3');
+    let completed = 0,
+        level = document.querySelector(`#level_${completed + 1}`),
+        buttons = document.querySelectorAll(`#level_${completed + 1} div`),
+        num = 0;
 
-// Indicates if timer is paused or running
-let paused = true;
+    //CHANGING FOR NEXT LEVEL
+    function changeLvl () {
+        //Winners message
+        alert(`🏆LEVEL COMPLETED🏆 |Levels completed: ${completed}, going to Level: ${completed + 1}|`);
+        //Hiding previous level
+        level.style.display = 'none';
+        //Changing value for [level]
+        level = document.querySelector(`#level_${completed + 1}`)
+        //Changing value for [buttons]
+        buttons = document.querySelectorAll(`#level_${completed + 1} div`);
+        //Showing next level
+        level.style.display = 'flex';
 
-// Actual time values on timer
-const time = {
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-};
+        game();
 
-// Function that sends time values on screen
-function refreshScreen () {
-    timerNumbers[0].innerHTML = time.hours;
-    timerNumbers[1].innerHTML = time.minutes;
-    timerNumbers[2].innerHTML = time.seconds;
-}
+        num = 0;
+    }
 
-// Function that resets timer values
-function reset () {
-    time.hours = 0;
-    time.minutes = 0;
-    time.seconds = 0;
-    refreshScreen();
-}
-
-// Function that allows user input time values
-function timerInput () {
-    timerButtons.forEach((btn, i) => {
-        let a = '';
-
-        // Function that changes number
-        const changeNum = () => {
-            if (i == 0 && time.hours > 0) {
-                time.hours--;
-                refreshScreen();
-            } else if (i == 1 && time.hours < 60) {
-                time.hours++;
-                refreshScreen();
-            } else if (i == 2 && time.minutes > 0) {
-                time.minutes--;
-                refreshScreen();
-            } else if (i == 3 && time.minutes < 60) {
-                time.minutes++;
-                refreshScreen();
-            } else if (i == 4 && time.seconds > 0) {
-                time.seconds--;
-                refreshScreen();
-            } else if (i == 5 && time.seconds < 60) {
-                time.seconds++;
-                refreshScreen();
-            } else if (i == 0 && time.hours == 0) {
-                time.hours = 60;
-                refreshScreen();
-            } else if (i == 2 && time.minutes == 0) {
-                time.minutes = 60;
-                refreshScreen();
-            } else if (i == 4 && time.seconds == 0) {
-                time.seconds = 60;
-                refreshScreen();
-            } else if (i == 1 && time.hours == 60) {
-                time.hours = 0;
-                refreshScreen();
-            } else if (i == 3 && time.minutes == 60) {
-                time.minutes = 0;
-                refreshScreen();
-            } else if (i == 5 && time.seconds == 60) {
-                time.seconds = 0;
-                refreshScreen();
-            }
-        };
-
-        // While holding button
-        btn.addEventListener('mousedown', () => {
-            a = setInterval(changeNum, 90);
+    //RESTARTING LEVEL IF PLAYER FAILS
+    function restart () {
+        buttons.forEach (btn => {
+            btn.style.backgroundColor = 'white';
         });
 
-        btn.addEventListener('mouseup', () => {
-            clearInterval(a);
+        num = 0;
+    }
+
+    //MAKES GAME WORK
+    function game () {
+        buttons.forEach (btn => {
+            btn.addEventListener('click', () => {
+                num++;
+                
+                if(num != btn.id) {
+                    restart();
+                } else if (buttons.length != num) {
+                    btn.style.backgroundColor = 'gray';
+                } else {
+                    completed++;
+    
+                    changeLvl();
+                }
+            });
         });
-        
-        // While pointer is out of button (bug )
-        btn.addEventListener('mouseleave', () => {
-            clearInterval(a);
-        })
+    }
 
-        // While pressing button
-        btn.addEventListener('click', () => {
-            changeNum();
-        });
-    });
-};
-
-// Functions that counts time left
-function counting () {
-        let a = setInterval(function() {
-            if (time.hours == 0 && time.minutes == 0 && time.seconds == 0) {
-                alarm.play();
-                setTimeout(() => {
-                    alarm.load();
-                    clearInterval(a);
-                }, 4000);
-                timerConfirm.style.display = 'flex';
-                timerPause.style.display = 'none';
-            } else if (time.seconds == 0 && time.minutes != 0) {
-                time.minutes--;
-                time.seconds = 59;
-            } else if (time.seconds == 0 && time.minutes == 0){
-                time.hours--;
-                time.minutes = 59;
-                time.seconds = 59;
-            } else {
-                time.seconds--;
-            }
-
-            refreshScreen();
-        }, 1000);
-
-        // Puts timer on pause
-        timerPause.addEventListener('click', () => {
-            if (!paused) {
-                clearInterval(a);
-                timerPause.style.display = 'none';
-                timerContinue.style.display = 'flex';
-            }
-        });
-
-        // Stops and resets timer
-        timerStop.addEventListener('click', () => {
-            clearInterval(a);
-            timerPause.style.display = 'none';
-            timerStop.style.display = 'none';
-            timerConfirm.style.display = 'flex';
-            reset();
-            refreshScreen();
-        });
-}
-
-// Starts timer
-timerConfirm.addEventListener('click', () => {
-    counting();
-    paused = false;
-    timerConfirm.style.display = 'none';
-    timerPause.style.display = 'flex';
-    timerStop.style.display = 'flex';
+    //CALLED FUNCTIONS
+    game();
 });
-
-// Continues timer after pause
-timerContinue.addEventListener('click', () => {
-    counting();
-    paused = false;
-    timerPause.style.display = 'flex';
-    timerContinue.style.display = 'none';
-});
-
-// Called funcions
-timerInput();
