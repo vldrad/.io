@@ -1,39 +1,59 @@
+body {
+    user-select: none;
+    background-color: black;
+}
+
 #level_1 {
-    height: 300px;
-    width: 300px;
-    margin: 0 auto;
+    height: 400px;
+    width: 400px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 #level_1 div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 30px;
     font-weight: 900;
-    border: 1px solid red;
     height: 30%;
     width: 30%;
 }
 
 #level_2 {
-    height: 300px;
-    width: 300px;
-    margin: 0 auto;
+    height: 400px;
+    width: 400px;
     display: none;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 #level_2 div {
+    font-size: 30px;
+    font-weight: 900;
+    height: 23%;
+    width: 23%;
+}
+
+.lvl_style {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 100px auto;
+    padding: 0 0;
+}
+
+.btn_style {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
-    font-weight: 900;
-    border: 1px solid red;
-    height: 30%;
-    width: 30%;
+    border-radius: 100px;
+    border: 3px solid red;
+    background-color: whitesmoke;
+}
+
+.click_anim {
+    animation: click 0.5s;
+}
+
+@keyframes click {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
 }

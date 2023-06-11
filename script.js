@@ -1,21 +1,17 @@
 'use strict'
 
 document.addEventListener('DOMContentLoaded', () => {
+    alert('HELLO! TO COMPLETE LEVELS CHOOSE NUMBERS FROM LOW TO HIGH! GOOD LUCK!');
 
     let completed = 0,
         level = document.querySelector(`#level_${completed + 1}`),
         buttons = document.querySelectorAll(`#level_${completed + 1} div`),
         num = 0;
-    const lastLevel = 2;
 
     //CHANGING FOR NEXT LEVEL
     function changeLvl () {
         //Winners message
-        if (completed != lastLevel) {
-            alert(`🏆LEVEL COMPLETED🏆 |Levels completed: ${completed}, going to Level: ${completed + 1}|`);
-        } else {
-            alert('🏁YOU HAVE COMLETED GAME , CONGRATULATIONS🏁');
-        }
+        alert(`🏆LEVEL COMPLETED🏆 |Levels completed: ${completed}, going to Level: ${completed + 1}|`);
         //Hiding previous level
         level.style.display = 'none';
         //Changing value for [level]
@@ -33,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //RESTARTING LEVEL IF PLAYER FAILS
     function restart () {
         buttons.forEach (btn => {
-            btn.style.backgroundColor = 'white';
+            btn.style.backgroundColor = 'whitesmoke';
+            btn.style.border = '3px solid red';
+            btn.classList.remove('click_anim');
         });
 
         num = 0;
@@ -41,18 +39,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //MAKES GAME WORK
     function game () {
-
         buttons.forEach (btn => {
+            //For mouse click
             btn.addEventListener('click', () => {
                 num++;
                 
                 if(num != btn.id) {
                     restart();
                 } else if (buttons.length != num) {
-                    btn.style.backgroundColor = 'gray';
+                    btn.classList.add('click_anim');
+                    setTimeout(() => {
+                        btn.style.backgroundColor = 'black';
+                        btn.style.border = 'none';
+                    }, 300);
                 } else {
                     completed++;
-
+    
+                    changeLvl();
+                }
+            });
+            //For touch screen
+            btn.addEventListener('touchstart', () => {
+                num++;
+                
+                if(num != btn.id) {
+                    restart();
+                } else if (buttons.length != num) {
+                    btn.style.backgroundColor = 'black';
+                    btn.style.border = 'none';
+                } else {
+                    completed++;
+    
                     changeLvl();
                 }
             });
