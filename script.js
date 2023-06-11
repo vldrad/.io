@@ -6,11 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
         level = document.querySelector(`#level_${completed + 1}`),
         buttons = document.querySelectorAll(`#level_${completed + 1} div`),
         num = 0;
+    const lastLevel = 2;
 
     //CHANGING FOR NEXT LEVEL
     function changeLvl () {
         //Winners message
-        alert(`🏆LEVEL COMPLETED🏆 |Levels completed: ${completed}, going to Level: ${completed + 1}|`);
+        if (completed != lastLevel) {
+            alert(`🏆LEVEL COMPLETED🏆 |Levels completed: ${completed}, going to Level: ${completed + 1}|`);
+        } else {
+            alert('🏁YOU HAVE COMLETED GAME , CONGRATULATIONS🏁');
+        }
         //Hiding previous level
         level.style.display = 'none';
         //Changing value for [level]
@@ -36,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //MAKES GAME WORK
     function game () {
+
         buttons.forEach (btn => {
             btn.addEventListener('click', () => {
                 num++;
@@ -46,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.backgroundColor = 'gray';
                 } else {
                     completed++;
-    
+
                     changeLvl();
                 }
             });
