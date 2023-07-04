@@ -6,12 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let completed = 0,
         level = document.querySelector(`#level_${completed + 1}`),
         buttons = document.querySelectorAll(`#level_${completed + 1} div`),
-        num = 0;
+        num = 0,
+        timer = document.querySelectorAll('#timer div'),
+        lvlTime = 0,
+        mins = 0,
+        secs = 0,
+        msecs = 0,
+        tmr = '';
 
     //CHANGING FOR NEXT LEVEL
     function changeLvl () {
         //Winners message
-        alert(`🏆LEVEL COMPLETED🏆 |Levels completed: ${completed}, going to Level: ${completed + 1}|`);
+        alert(`🏆LEVEL COMPLETED🏆 |Time: ${lvlTime} |Levels completed: ${completed}, going to Level: ${completed + 1}|`);
         //Hiding previous level
         level.style.display = 'none';
         //Changing value for [level]
@@ -43,9 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             btn.addEventListener('click', () => {
                 num++;
+
+                if (num == 1) {
+                    timing();
+                }
                 
-                if(num != btn.id) {
+                if (num != btn.id) {
                     restart();
+                    resetTimer();
                 } else if (buttons.length != num) {
                     btn.classList.add('click_anim');
                     setTimeout(() => {
@@ -54,11 +65,52 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 300);
                 } else {
                     completed++;
-    
+
+                    lvlTime = `${mins}m ${secs}s ${msecs}0ms`;
+
                     changeLvl();
+                    resetTimer();
                 }
             });
         });
+    }
+
+    // COUNTS TIME FOR LEVEL
+    function timing () {
+        tmr = setInterval(() => {
+            msecs += 1;
+            timer[2].innerHTML = msecs;
+            if (msecs == 100) {
+                msecs = 0;
+                secs += 1;
+                if (secs > 9) {
+                    timer[1].innerHTML = secs;
+                } else {
+                    timer[1].innerHTML =`0${secs}`;
+                }
+            }
+            if (secs == 60) {
+                secs = 0;
+                mins += 1;
+                if (mins > 9) {
+                    timer[0].innerHTML = mins;
+                } else {
+                    timer[0].innerHTML = `0${mins}`;
+                }
+            }
+        }, 10);
+    }
+
+    // RESETS LEVEL TIMER
+    function resetTimer () {
+        clearInterval(tmr);
+        mins = 0;
+        secs = 0;
+        msecs = 0;
+        timer[0].innerHTML = '--';
+        timer[1].innerHTML = '--';
+        timer[2].innerHTML = '--';
+        lvlTime = 0;
     }
 
     //CALLED FUNCTIONS

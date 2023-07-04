@@ -3,6 +3,25 @@ body {
     background-color: black;
 }
 
+#timer {
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: -50px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#timer div {
+    color: whitesmoke;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
 #level_1 {
     height: 400px;
     width: 400px;
