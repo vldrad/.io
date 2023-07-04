@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function restart () {
         buttons.forEach (btn => {
             btn.style.backgroundColor = 'whitesmoke';
-            btn.style.border = '3px solid red';
             btn.classList.remove('click_anim');
         });
 
