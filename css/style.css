@@ -1,0 +1,133 @@
+@font-face {
+    font-family: 'RO Spritendo';
+    src: url('../fonts/RO-Spritendo-SemiBold-BETA.woff2') format('woff2'),
+         url('../fonts/RO-Spritendo-SemiBold-BETA.woff') format('woff'),
+         url('../fonts/RO-Spritendo-SemiBold-BETA.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: wheat;
+    align-items: center;
+    min-height: 100vh;
+}
+
+body div {
+    min-height: 100vh;;
+}
+
+.left {
+    background-color: blue;
+    width: 10%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-radius: 50px 0 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8vh;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    padding: 0;
+    font-family: 'RO Spritendo';
+    color: rgb(255, 255, 255);
+    user-select: none;
+}
+
+.right {
+    background-color: red;
+    width: 10%;
+    position: fixed;
+    right: 0;
+    top: -40vh;
+    border-radius: 0 50px 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'RO Spritendo';
+}
+
+.joycon_anim {
+    animation-name: click;
+    animation-duration: 0.4s;
+}
+
+@keyframes click {
+    0% {
+        top: -40vh;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+.right p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8vh;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    padding: 0;
+    color: rgb(255, 255, 255);
+    user-select: none;
+}
+
+.main {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 80%;
+    height: 100%;
+    border-radius: 7px;
+}
+
+.enter_window {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    height: 20px;
+    width: 80%;
+}
+
+.enter_window p {
+    font-family: 'RO Spritendo';
+    color: white;
+    font-size: 5vh;
+}
+
+.enter_window button {
+    font-family: 'RO Spritendo';
+    color: white;
+    background-color: rgb(43, 40, 40);
+    border-radius: 100px;
+    font-size: 10vh;
+    padding: 20px;
+}
+
+.content {
+    display: none;
+    color: white;
+}
