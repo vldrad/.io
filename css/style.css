@@ -1,133 +1,75 @@
-@font-face {
-    font-family: 'RO Spritendo';
-    src: url('../fonts/RO-Spritendo-SemiBold-BETA.woff2') format('woff2'),
-         url('../fonts/RO-Spritendo-SemiBold-BETA.woff') format('woff'),
-         url('../fonts/RO-Spritendo-SemiBold-BETA.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-
-
 body {
+    padding: 0;
     margin: 0;
-    padding: 0;
     display: flex;
-    justify-content: center;
-    background-color: wheat;
-    align-items: center;
-    min-height: 100vh;
-}
-
-body div {
-    min-height: 100vh;;
-}
-
-.left {
-    background-color: blue;
-    width: 10%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    border-radius: 50px 0 0 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.left p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 8vh;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    padding: 0;
-    font-family: 'RO Spritendo';
-    color: rgb(255, 255, 255);
+    flex-direction: column;
+    background-color: black;
     user-select: none;
 }
 
-.right {
-    background-color: red;
-    width: 10%;
-    position: fixed;
-    right: 0;
-    top: -40vh;
-    border-radius: 0 50px 50px 0;
+h1 {
+    font-family: 'Hello Twins - Personal Use';
+    cursor: default;
+    font-size: 10vh;
+    display: flex;
+    color: red;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-shadow: 1px 1px 1px orange, 2px 2px 1px yellow, 3px 3px 1px green, 4px 4px 1px blue, 5px 5px 1px purple;
+}
+
+h2 {
+    font-family: 'Hello Twins - Personal Use';
+    color: white;
+    cursor: default;
+    font-size: 5vh;
+    margin: 0 auto;
+}
+
+#screen {
+    border: 1px solid rgb(220, 185, 149);
+    border-radius: 20px;
+    height: 150px;
+    display: flex;
+    color: rgb(220, 185, 149);
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    margin: 30px;
+    padding: 0;
+    cursor: default;
+    font-family: 'DePixel';
+}
+
+button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'RO Spritendo';
+    font-size: 5vw;
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: none;
+    color: white;
+    padding: 0;
+    background-color: black;
+    font-family: 'Hello Twins - Personal Use';
 }
 
-.joycon_anim {
-    animation-name: click;
-    animation-duration: 0.4s;
+button:hover {
+    text-shadow: 0px 0px 25px rgb(86, 184, 220);
+    cursor: pointer;
+    animation-name: scaling;
+    animation-duration: 0.5s;
+    transform: scale(1.2);
 }
 
-@keyframes click {
+@keyframes scaling {
     0% {
-        top: -40vh;
+        transform: scale(1);
     }
 
     100% {
-        top: 0;
+        transform: scale(1.2);
     }
-}
-
-.right p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 8vh;
-    font-weight: bold;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    padding: 0;
-    color: rgb(255, 255, 255);
-    user-select: none;
-}
-
-.main {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    width: 80%;
-    height: 100%;
-    border-radius: 7px;
-}
-
-.enter_window {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-    height: 20px;
-    width: 80%;
-}
-
-.enter_window p {
-    font-family: 'RO Spritendo';
-    color: white;
-    font-size: 5vh;
-}
-
-.enter_window button {
-    font-family: 'RO Spritendo';
-    color: white;
-    background-color: rgb(43, 40, 40);
-    border-radius: 100px;
-    font-size: 10vh;
-    padding: 20px;
-}
-
-.content {
-    display: none;
-    color: white;
 }
