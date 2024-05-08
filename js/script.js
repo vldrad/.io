@@ -2,21 +2,20 @@
 
 const screen = document.querySelector('#screen'),
       btn = document.querySelector('button'),
-      waiting = new Audio('sounds/waiting.mp3');
+      waiting = new Audio('sounds/waiting.mp3'),
+      NO = new Audio('sounds/NO.mp3'),
+      YES = new Audio('sounds/YES.mp3');
 
 function yesNo() {
-    waiting.pause();
-    waiting.currentTime = 0;
-
     let num = Math.floor(Math.random() * 1000);
                 
     if (num % 2 == 0) {
         screen.innerHTML = 'Unfortunately, YOU ARE NOT GAY!';
-        new Audio('sounds/NO.mp3').play();
+        NO.play();
         console.log('User is not gay.');
     } else {
         screen.innerHTML = 'Congratulations, YOU ARE GAY!';
-        new Audio('sounds/YES.mp3').play();
+        YES.play();
         console.log('User is gay.');
     }
 }
@@ -57,6 +56,9 @@ function startCheck() {
     
             setTimeout(() => {
                 yesNo();
+                waiting.pause();
+                waiting.currentTime = 0;
+                
                 finished = true;
                 
                 btn.innerHTML = 'AGAIN?'
