@@ -2,6 +2,7 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
+    align-items: center;
     flex-direction: column;
     background-color: black;
     user-select: none;
@@ -10,11 +11,12 @@ body {
 h1 {
     font-family: 'Hello Twins - Personal Use';
     cursor: default;
-    font-size: 10vh;
+    font-size: 10vw;
     display: flex;
     color: red;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 100px;
+    margin-bottom: 50px;
     text-shadow: 1px 1px 1px orange, 2px 2px 1px yellow, 3px 3px 1px green, 4px 4px 1px blue, 5px 5px 1px purple;
 }
 
@@ -22,7 +24,7 @@ h2 {
     font-family: 'Hello Twins - Personal Use';
     color: white;
     cursor: default;
-    font-size: 5vh;
+    font-size: 5vw;
     margin: 0 auto;
 }
 
@@ -35,6 +37,7 @@ h2 {
     justify-content: center;
     align-items: center;
     font-size: 5vw;
+    width: 95%;
     margin: 30px;
     padding: 0;
     cursor: default;
@@ -45,10 +48,10 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5vw;
+    font-size: 8vw;
     width: 150px;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 50px;
     border: none;
     color: white;
     padding: 0;
